@@ -1,94 +1,106 @@
 package com.aps.biometricauthapp.data.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Address {
+    @SerializedName("cep")
     private String cep;
-    private String logradouro;
-    private String complemento;
-    private String bairro;
-    private String localidade;
+    @SerializedName("logradouro")
+    private String publicPlace;
+    @SerializedName("complemento")
+    private String complement;
+    @SerializedName("bairro")
+    private String district;
+    @SerializedName("localidade")
+    private String location;
+    @SerializedName("uf")
     private String uf;
+    @SerializedName("ibge")
     private String ibge;
+    @SerializedName("gia")
     private String gia;
+    @SerializedName("ddd")
     private String ddd;
+    @SerializedName("siafi")
     private String siafi;
 
     public String getCep() {
         return cep;
     }
 
-    public void setCep(String value) {
-        this.cep = value;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public String getPublicPlace() {
+        return publicPlace;
     }
 
-    public void setLogradouro(String value) {
-        this.logradouro = value;
+    public void setPublicPlace(String publicPlace) {
+        this.publicPlace = publicPlace;
     }
 
-    public String getComplemento() {
-        return complemento;
+    public String getComplement() {
+        return complement;
     }
 
-    public void setComplemento(String value) {
-        this.complemento = value;
+    public void setComplement(String complement) {
+        this.complement = complement;
     }
 
-    public String getBairro() {
-        return bairro;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setBairro(String value) {
-        this.bairro = value;
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
-    public String getLocalidade() {
-        return localidade;
+    public String getLocation() {
+        return location;
     }
 
-    public void setLocalidade(String value) {
-        this.localidade = value;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getUf() {
         return uf;
     }
 
-    public void setUf(String value) {
-        this.uf = value;
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
     public String getIbge() {
         return ibge;
     }
 
-    public void setIbge(String value) {
-        this.ibge = value;
+    public void setIbge(String ibge) {
+        this.ibge = ibge;
     }
 
     public String getGia() {
         return gia;
     }
 
-    public void setGia(String value) {
-        this.gia = value;
+    public void setGia(String gia) {
+        this.gia = gia;
     }
 
     public String getDdd() {
         return ddd;
     }
 
-    public void setDdd(String value) {
-        this.ddd = value;
+    public void setDdd(String ddd) {
+        this.ddd = ddd;
     }
 
     public String getSiafi() {
         return siafi;
     }
 
-    public void setSiafi(String value) {
-        this.siafi = value;
+    public void setSiafi(String siafi) {
+        this.siafi = siafi;
     }
 }
