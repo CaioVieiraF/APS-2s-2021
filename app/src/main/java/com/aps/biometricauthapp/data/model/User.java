@@ -1,9 +1,12 @@
 package com.aps.biometricauthapp.data.model;
 
+import androidx.room.Entity;
+
 import com.aps.biometricauthapp.util.AccessLevel;
 
 import java.util.Date;
 
+@Entity
 public class User {
     private String name;
     private Integer age;
