@@ -1,8 +1,10 @@
-package com.aps.biometricauthapp;
+package com.aps.biometricauthapp.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.aps.biometricauthapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
