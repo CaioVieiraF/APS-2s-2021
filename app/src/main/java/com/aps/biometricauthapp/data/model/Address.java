@@ -24,6 +24,31 @@ public class Address {
     @SerializedName("siafi")
     private String siafi;
 
+    public Address() {
+    }
+
+    public Address(String cep,
+                   String publicPlace,
+                   String complement,
+                   String district,
+                   String location,
+                   String uf,
+                   String ibge,
+                   String gia,
+                   String ddd,
+                   String siafi) {
+        this.cep = cep;
+        this.publicPlace = publicPlace;
+        this.complement = complement;
+        this.district = district;
+        this.location = location;
+        this.uf = uf;
+        this.ibge = ibge;
+        this.gia = gia;
+        this.ddd = ddd;
+        this.siafi = siafi;
+    }
+
     public String getCep() {
         return cep;
     }
