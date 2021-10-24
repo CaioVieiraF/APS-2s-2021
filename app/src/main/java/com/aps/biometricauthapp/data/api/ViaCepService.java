@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public interface viaCepService {
+public interface ViaCepService {
     @GET("ws/{cep}/json/")
     Observable<Address> getAddress(@Path("cep") String cep);
 }
