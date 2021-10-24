@@ -9,8 +9,7 @@ import java.util.Date;
 @Entity
 public class User {
     private String name;
-    private Integer age;
-    private Date birthDay;
+    private Date birthday;
     private Address address;
     private String password;
     private Date loginActivity;
@@ -18,16 +17,14 @@ public class User {
     private String accessLevelKey;
 
     public User(String name,
-                Integer age,
-                Date birthDay,
+                Date birthday,
                 Address address,
                 String password,
                 Date loginActivity,
                 AccessLevel accessLevel,
                 String accessLevelKey) {
         this.name = name;
-        this.age = age;
-        this.birthDay = birthDay;
+        this.birthday = birthday;
         this.address = address;
         this.password = password;
         this.loginActivity = loginActivity;
@@ -43,20 +40,12 @@ public class User {
         this.name = name;
     }
 
-    public Integer getAge() {
-        return age;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Date getBirthDay() {
-        return birthDay;
-    }
-
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public Address getAddress() {
