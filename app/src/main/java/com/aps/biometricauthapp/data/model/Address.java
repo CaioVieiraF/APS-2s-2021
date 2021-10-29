@@ -2,6 +2,8 @@ package com.aps.biometricauthapp.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import javax.inject.Inject;
+
 public class Address {
     @SerializedName("cep")
     private String cep;
@@ -27,6 +29,7 @@ public class Address {
     public Address() {
     }
 
+    @Inject
     public Address(String cep,
                    String publicPlace,
                    String complement,
