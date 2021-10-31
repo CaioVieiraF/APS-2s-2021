@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import com.aps.biometricauthapp.util.AccessLevel;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -16,7 +17,7 @@ public class User {
     private String email;
     private Date birthday;
     private String password;
-    private Date loginActivity;
+    private List<Date> loginActivity;
     private String accessLevelKey;
     private AccessLevel accessLevel;
 
@@ -28,7 +29,7 @@ public class User {
                 String email,
                 Date birthday,
                 String password,
-                Date loginActivity,
+                List<Date> loginActivity,
                 String accessLevelKey,
                 AccessLevel accessLevel) {
         this.address = address;
@@ -81,11 +82,11 @@ public class User {
         this.password = password;
     }
 
-    public Date getLoginActivity() {
+    public List<Date> getLoginActivity() {
         return loginActivity;
     }
 
-    public void setLoginActivity(Date loginActivity) {
+    public void setLoginActivity(List<Date> loginActivity) {
         this.loginActivity = loginActivity;
     }
 
