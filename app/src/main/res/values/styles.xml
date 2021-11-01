@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.MaterialComponents.Button.TextButton.Rounded" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="cornerRadius">32dp</item>
+    </style>
+</resources>
