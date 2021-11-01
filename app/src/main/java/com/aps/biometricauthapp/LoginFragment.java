@@ -72,7 +72,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (RegexUtils.isEmail(s)) {
-                    binding.textInputEmailLayout.setError(null);
+                    binding.textInputEmailLayout.setErrorEnabled(false);
                 } else {
                     binding.textInputEmailLayout.setError("Formato de e-mail inválido");
                 }
