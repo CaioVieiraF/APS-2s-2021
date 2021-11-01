@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.BiometricAuthApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/brazil_green_light</item>
-        <item name="colorPrimaryVariant">@color/brazil_green</item>
+        <item name="colorPrimary">@color/brazil_green</item>
+        <item name="colorPrimaryVariant">@color/brazil_green_dark</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/brazil_yellow_light</item>
-        <item name="colorSecondaryVariant">@color/brazil_yellow</item>
+        <item name="colorSecondary">@color/brazil_yellow</item>
+        <item name="colorSecondaryVariant">@color/brazil_yellow_dark</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
