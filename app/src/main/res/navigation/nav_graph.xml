@@ -35,5 +35,18 @@
         android:id="@+id/signUpAddressFragment"
         android:name="com.aps.biometricauthapp.SignUpAddressFragment"
         android:label="fragment_sign_up_address"
-        tools:layout="@layout/fragment_sign_up_address" />
+        tools:layout="@layout/fragment_sign_up_address" >
+        <action
+            android:id="@+id/action_signUpAddressFragment_to_signUpAccessLevelFragment"
+            app:destination="@id/signUpAccessLevelFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpAccessLevelFragment"
+        android:name="com.aps.biometricauthapp.SignUpAccessLevelFragment"
+        android:label="fragment_sign_up_access_level"
+        tools:layout="@layout/fragment_sign_up_access_level" />
 </navigation>
