@@ -34,10 +34,15 @@ android {
 }
 
 dependencies {
+    // Logger
+    implementation 'com.orhanobut:logger:2.2.0'
+    // AndroidUtilCode
+    implementation 'com.blankj:utilcodex:1.30.6'
     // Biometric
     implementation "androidx.biometric:biometric:1.1.0"
     // Hilt
     implementation 'com.google.dagger:hilt-android:2.39.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor 'com.google.dagger:hilt-compiler:2.39.1'
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
