@@ -22,5 +22,18 @@
         android:id="@+id/signUpBasicInfoFragment"
         android:name="com.aps.biometricauthapp.SignUpBasicInfoFragment"
         android:label="fragment_sign_up_basic_info"
-        tools:layout="@layout/fragment_sign_up_basic_info" />
+        tools:layout="@layout/fragment_sign_up_basic_info" >
+        <action
+            android:id="@+id/action_signUpBasicInfoFragment_to_signUpAddressFragment"
+            app:destination="@id/signUpAddressFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpAddressFragment"
+        android:name="com.aps.biometricauthapp.SignUpAddressFragment"
+        android:label="fragment_sign_up_address"
+        tools:layout="@layout/fragment_sign_up_address" />
 </navigation>
