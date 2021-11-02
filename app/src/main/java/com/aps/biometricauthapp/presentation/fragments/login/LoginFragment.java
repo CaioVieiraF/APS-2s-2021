@@ -1,4 +1,4 @@
-package com.aps.biometricauthapp;
+package com.aps.biometricauthapp.presentation.fragments.login;
 
 import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG;
 import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_WEAK;
@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.databinding.FragmentLoginBinding;
 import com.blankj.utilcode.util.RegexUtils;
 
