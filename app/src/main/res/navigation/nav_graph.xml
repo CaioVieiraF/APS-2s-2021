@@ -48,5 +48,18 @@
         android:id="@+id/signUpAccessLevelFragment"
         android:name="com.aps.biometricauthapp.SignUpAccessLevelFragment"
         android:label="fragment_sign_up_access_level"
-        tools:layout="@layout/fragment_sign_up_access_level" />
+        tools:layout="@layout/fragment_sign_up_access_level" >
+        <action
+            android:id="@+id/action_signUpAccessLevelFragment_to_signUpPasswordFragment"
+            app:destination="@id/signUpPasswordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpPasswordFragment"
+        android:name="com.aps.biometricauthapp.SignUpPasswordFragment"
+        android:label="fragment_sign_up_password"
+        tools:layout="@layout/fragment_sign_up_password" />
 </navigation>
