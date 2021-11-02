@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.aps.biometricauthapp.databinding.FragmentLoginBinding;
 import com.blankj.utilcode.util.RegexUtils;
@@ -61,6 +62,7 @@ public class LoginFragment extends Fragment {
                 .setTitle("Ministério do Meio Ambiente")
                 .setSubtitle("Desbloqueie seu app")
                 .setAllowedAuthenticators(BIOMETRIC_STRONG | BIOMETRIC_WEAK | DEVICE_CREDENTIAL)
+                .setConfirmationRequired(true)
                 .build();
         // TODO: 01/11/2021 Verificar como adicionar a validação biometrica automaticamente ao entrar no app 
 //        biometricPrompt.authenticate(promptInfo);
@@ -83,6 +85,7 @@ public class LoginFragment extends Fragment {
             }
         });
         binding.loginButton.setOnClickListener(v -> biometricPrompt.authenticate(promptInfo));
+        binding.registerButton.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_signUpBasicInfoFragment));
         return binding.getRoot();
     }
 }
