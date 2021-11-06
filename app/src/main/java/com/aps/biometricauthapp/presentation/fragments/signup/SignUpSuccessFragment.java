@@ -10,18 +10,20 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.aps.biometricauthapp.R;
-import com.aps.biometricauthapp.databinding.FragmentSignUpPasswordBinding;
+import com.aps.biometricauthapp.databinding.FragmentSignUpSuccessBinding;
 
-public class SignUpPasswordFragment extends Fragment {
-    private FragmentSignUpPasswordBinding binding;
-    public SignUpPasswordFragment() {
+public class SignUpSuccessFragment extends Fragment {
+    private FragmentSignUpSuccessBinding binding;
+
+    public SignUpSuccessFragment() {
     }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentSignUpPasswordBinding.inflate(inflater, container, false);
-        binding.finishButton.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.action_signUpPasswordFragment_to_signUpSuccessFragment);
+        binding = FragmentSignUpSuccessBinding.inflate(inflater, container, false);
+        binding.loginButton.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.action_signUpSuccessFragment_to_loginFragment);
         });
         return binding.getRoot();
     }

@@ -61,5 +61,28 @@
         android:id="@+id/signUpPasswordFragment"
         android:name="com.aps.biometricauthapp.presentation.fragments.signup.SignUpPasswordFragment"
         android:label="fragment_sign_up_password"
-        tools:layout="@layout/fragment_sign_up_password" />
+        tools:layout="@layout/fragment_sign_up_password" >
+        <action
+            android:id="@+id/action_signUpPasswordFragment_to_signUpSuccessFragment"
+            app:destination="@id/signUpSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpSuccessFragment"
+        android:name="com.aps.biometricauthapp.presentation.fragments.signup.SignUpSuccessFragment"
+        android:label="fragment_sign_up_success"
+        tools:layout="@layout/fragment_sign_up_success" >
+        <action
+            android:id="@+id/action_signUpSuccessFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
