@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BiometricAuthApp">
         <activity
-            android:name=".MainActivity2"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.MainActivity"
