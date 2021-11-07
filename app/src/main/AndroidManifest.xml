@@ -17,10 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BiometricAuthApp">
         <activity
-            android:name=".HomeActivity"
+            android:name=".presentation.activities.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

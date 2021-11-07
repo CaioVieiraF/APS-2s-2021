@@ -1,4 +1,4 @@
-package com.aps.biometricauthapp.presentation;
+package com.aps.biometricauthapp.presentation.activities;
 
 import android.os.Bundle;
 

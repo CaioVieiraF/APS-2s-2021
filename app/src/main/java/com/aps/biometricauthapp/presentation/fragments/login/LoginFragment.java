@@ -17,7 +17,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.aps.biometricauthapp.HomeActivity;
+import com.aps.biometricauthapp.presentation.activities.HomeActivity;
 import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.databinding.FragmentLoginBinding;
 import com.blankj.utilcode.util.ActivityUtils;

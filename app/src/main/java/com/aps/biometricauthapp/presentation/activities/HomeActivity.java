@@ -1,4 +1,4 @@
-package com.aps.biometricauthapp;
+package com.aps.biometricauthapp.presentation.activities;
 
 import android.os.Bundle;
 
@@ -7,6 +7,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.databinding.ActivityHomeBinding;
 
 public class HomeActivity extends AppCompatActivity {
