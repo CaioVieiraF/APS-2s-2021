@@ -1,4 +1,4 @@
-package com.aps.biometricauthapp;
+package com.aps.biometricauthapp.presentation.fragments.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

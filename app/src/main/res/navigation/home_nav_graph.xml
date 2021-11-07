@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/infoFragment"
-        android:name="com.aps.biometricauthapp.InfoFragment"
+        android:name="com.aps.biometricauthapp.presentation.fragments.home.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/savedFragment"
-        android:name="com.aps.biometricauthapp.SavedFragment"
+        android:name="com.aps.biometricauthapp.presentation.fragments.home.SavedFragment"
         android:label="fragment_saved"
         tools:layout="@layout/fragment_saved" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.aps.biometricauthapp.ProfileFragment"
+        android:name="com.aps.biometricauthapp.presentation.fragments.home.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
