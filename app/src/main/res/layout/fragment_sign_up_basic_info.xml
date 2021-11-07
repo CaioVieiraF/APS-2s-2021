@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:hint="ex: João Silva"
-                android:inputType="textPersonName"
+                android:capitalize="words"
                 android:padding="16dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +88,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:hint="ex: 123.456.789-00"
-                android:inputType="number"
+                android:inputType="number|numberSigned|numberDecimal|text"
+                android:maxLength="11"
                 android:padding="16dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,14 +115,17 @@
             app:boxCornerRadiusBottomStart="32dp"
             app:boxCornerRadiusTopEnd="32dp"
             app:boxCornerRadiusTopStart="32dp"
-            app:endIconDrawable="@drawable/ic_cancel"
-            app:endIconMode="clear_text"
+            app:errorIconDrawable="@drawable/ic_edit_calendar"
+            app:endIconDrawable="@drawable/ic_edit_calendar"
+            app:endIconMode="custom"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:enabled="false"
+                android:textColor="@color/black"
                 android:hint="ex: 01/02/1990"
                 android:inputType="date"
                 android:padding="16dp" />
