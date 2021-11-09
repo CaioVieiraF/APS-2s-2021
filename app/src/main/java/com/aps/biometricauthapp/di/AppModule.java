@@ -1,4 +1,4 @@
-package com.aps.biometricauthapp.ui.di;
+package com.aps.biometricauthapp.di;
 
 import com.aps.biometricauthapp.data.api.ViaCepService;
 
@@ -9,7 +9,6 @@ import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.components.SingletonComponent;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
@@ -21,7 +20,6 @@ public final class AppModule {
     static ViaCepService provideViaCepService() {
         return new Retrofit.Builder()
                 .baseUrl("https://viacep.com.br/")
-                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(ViaCepService.class);
