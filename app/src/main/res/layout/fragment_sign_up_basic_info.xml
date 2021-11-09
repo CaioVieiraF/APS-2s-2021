@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:orientation="vertical"
-        tools:context=".presentation.fragments.signup.SignUpBasicInfoFragment">
+        tools:context=".ui.fragments.signup.SignUpBasicInfoFragment">
 
         <TextView
             android:id="@+id/basicInfoTextView"

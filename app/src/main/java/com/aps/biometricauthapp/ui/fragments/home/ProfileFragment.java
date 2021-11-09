@@ -1,4 +1,4 @@
-package com.aps.biometricauthapp.presentation.fragments.home;
+package com.aps.biometricauthapp.ui.fragments.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.aps.biometricauthapp.databinding.FragmentInfoBinding;
+import com.aps.biometricauthapp.databinding.FragmentProfileBinding;
 
-public class InfoFragment extends Fragment {
-    private FragmentInfoBinding binding;
-    public InfoFragment() {
+public class ProfileFragment extends Fragment {
+    private FragmentProfileBinding binding;
+    public ProfileFragment() {
     }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentInfoBinding.inflate(inflater, container, false);
+        binding = FragmentProfileBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 }

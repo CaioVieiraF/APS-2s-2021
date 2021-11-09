@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/brazil_green"
-    tools:context=".presentation.fragments.signup.SignUpSuccessFragment">
+    tools:context=".ui.fragments.signup.SignUpSuccessFragment">
 
     <Button
         android:id="@+id/loginButton"

@@ -1,4 +1,4 @@
-package com.aps.biometricauthapp.presentation.fragments.signup;
+package com.aps.biometricauthapp.ui.fragments.signup;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;

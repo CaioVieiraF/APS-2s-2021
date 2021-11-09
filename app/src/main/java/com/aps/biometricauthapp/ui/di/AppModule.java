@@ -1,4 +1,4 @@
-package com.aps.biometricauthapp.presentation.di;
+package com.aps.biometricauthapp.ui.di;
 
 import com.aps.biometricauthapp.data.api.ViaCepService;
 

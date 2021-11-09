@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.aps.biometricauthapp.presentation.fragments.login.LoginFragment"
+        android:name="com.aps.biometricauthapp.ui.fragments.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpBasicInfoFragment"
-        android:name="com.aps.biometricauthapp.presentation.fragments.signup.SignUpBasicInfoFragment"
+        android:name="com.aps.biometricauthapp.ui.fragments.signup.SignUpBasicInfoFragment"
         android:label="fragment_sign_up_basic_info"
         tools:layout="@layout/fragment_sign_up_basic_info" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpAddressFragment"
-        android:name="com.aps.biometricauthapp.presentation.fragments.signup.SignUpAddressFragment"
+        android:name="com.aps.biometricauthapp.ui.fragments.signup.SignUpAddressFragment"
         android:label="fragment_sign_up_address"
         tools:layout="@layout/fragment_sign_up_address" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpAccessLevelFragment"
-        android:name="com.aps.biometricauthapp.presentation.fragments.signup.SignUpAccessLevelFragment"
+        android:name="com.aps.biometricauthapp.ui.fragments.signup.SignUpAccessLevelFragment"
         android:label="fragment_sign_up_access_level"
         tools:layout="@layout/fragment_sign_up_access_level" >
         <action
@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpPasswordFragment"
-        android:name="com.aps.biometricauthapp.presentation.fragments.signup.SignUpPasswordFragment"
+        android:name="com.aps.biometricauthapp.ui.fragments.signup.SignUpPasswordFragment"
         android:label="fragment_sign_up_password"
         tools:layout="@layout/fragment_sign_up_password" >
         <action
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpSuccessFragment"
-        android:name="com.aps.biometricauthapp.presentation.fragments.signup.SignUpSuccessFragment"
+        android:name="com.aps.biometricauthapp.ui.fragments.signup.SignUpSuccessFragment"
         android:label="fragment_sign_up_success"
         tools:layout="@layout/fragment_sign_up_success" >
         <action
