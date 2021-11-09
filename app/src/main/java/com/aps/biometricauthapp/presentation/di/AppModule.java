@@ -1,7 +1,10 @@
 package com.aps.biometricauthapp.presentation.di;
 
 import com.aps.biometricauthapp.data.api.ViaCepService;
-import com.aps.biometricauthapp.presentation.BiometricAuthApp;
+import com.aps.biometricauthapp.data.repository.AddressRepositoryImpl;
+import com.aps.biometricauthapp.data.repository.datasource.AddressRemoteDataSource;
+import com.aps.biometricauthapp.data.repository.datasourceimpl.AddressRemoteDataSourceImpl;
+import com.aps.biometricauthapp.domain.repository.AddressRepository;
 
 import javax.inject.Singleton;
 
@@ -27,4 +30,17 @@ public final class AppModule {
                 .build()
                 .create(ViaCepService.class);
     }
+
+    @Provides
+    @Singleton
+    static AddressRemoteDataSource provideAddressRemoteDataSource(ViaCepService viaCepService) {
+        return new AddressRemoteDataSourceImpl(viaCepService, "02420001");
+    }
+
+    @Provides
+    @Singleton
+    static AddressRepository provideAddressRepository(AddressRemoteDataSource addressRemoteDataSource) {
+        return new AddressRepositoryImpl(addressRemoteDataSource);
+    }
+    // TODO: 04/11/2021 add logging interceptor
 }
