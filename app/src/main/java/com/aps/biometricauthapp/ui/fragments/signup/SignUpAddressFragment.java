@@ -16,6 +16,9 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class SignUpAddressFragment extends Fragment {
 
     private FragmentSignUpAddressBinding binding;
