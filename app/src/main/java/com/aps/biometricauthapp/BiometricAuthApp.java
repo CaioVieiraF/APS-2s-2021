@@ -1,4 +1,4 @@
-package com.aps.biometricauthapp.ui;
+package com.aps.biometricauthapp;
 
 import android.app.Application;
 
