@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,44 +18,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Agora precisamos saber sobre seu endereço para que possa prosseguir :D"
+            android:text="Agora precisamos que confirme seu endereço para que possa prosseguir :D"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/cepTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="CEP"
-            android:textColor="@color/brazil_green"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputCepLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@color/white"
-            app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="32dp"
-            app:boxCornerRadiusBottomStart="32dp"
-            app:boxCornerRadiusTopEnd="32dp"
-            app:boxCornerRadiusTopStart="32dp"
-            app:endIconDrawable="@drawable/ic_cancel"
-            app:endIconMode="clear_text"
-            app:hintEnabled="false">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputCep"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:hint="ex: 12345-678"
-                android:inputType="number"
-                android:padding="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/publicPlaceTextView"
@@ -88,9 +53,11 @@
                 android:id="@+id/textInputPublicPlace"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:enabled="false"
                 android:hint="ex: Avenida Paulista"
                 android:inputType="textPostalAddress"
-                android:padding="16dp" />
+                android:padding="16dp"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -193,9 +160,11 @@
                 android:id="@+id/textInputDistrict"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:enabled="false"
                 android:hint="ex: Paraíso"
                 android:inputType="textPostalAddress"
-                android:padding="16dp" />
+                android:padding="16dp"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -228,9 +197,11 @@
                 android:id="@+id/textInputLocation"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:enabled="false"
                 android:hint="ex: São Paulo"
                 android:inputType="textPostalAddress"
-                android:padding="16dp" />
+                android:padding="16dp"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -263,9 +234,11 @@
                 android:id="@+id/textInputUf"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:enabled="false"
                 android:hint="ex: SP"
                 android:inputType="textPostalAddress"
-                android:padding="16dp" />
+                android:padding="16dp"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
