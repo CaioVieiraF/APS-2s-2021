@@ -25,6 +25,8 @@ public class Address {
     private String ddd;
     @SerializedName("siafi")
     private String siafi;
+    @SerializedName("erro")
+    private Boolean error;
 
     public Address() {
     }
@@ -39,7 +41,8 @@ public class Address {
                    String ibge,
                    String gia,
                    String ddd,
-                   String siafi) {
+                   String siafi,
+                   Boolean error) {
         this.cep = cep;
         this.publicPlace = publicPlace;
         this.complement = complement;
@@ -50,6 +53,7 @@ public class Address {
         this.gia = gia;
         this.ddd = ddd;
         this.siafi = siafi;
+        this.error = error;
     }
 
     public String getCep() {
@@ -130,5 +134,13 @@ public class Address {
 
     public void setSiafi(String siafi) {
         this.siafi = siafi;
+    }
+
+    public Boolean getError() {
+        return error;
+    }
+
+    public void setError(Boolean error) {
+        this.error = error;
     }
 }
