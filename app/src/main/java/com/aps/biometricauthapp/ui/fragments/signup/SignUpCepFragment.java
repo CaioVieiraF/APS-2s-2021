@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.data.model.Address;
 import com.aps.biometricauthapp.databinding.FragmentSignUpCepBinding;
+import com.aps.biometricauthapp.ui.viewmodel.UserViewModel;
 
 import java.util.Objects;
 
@@ -25,7 +26,7 @@ import retrofit2.Response;
 public class SignUpCepFragment extends Fragment {
 
     private FragmentSignUpCepBinding binding;
-    private SignUpViewModel viewModel;
+    private UserViewModel viewModel;
 
     public SignUpCepFragment() {
     }
@@ -34,7 +35,7 @@ public class SignUpCepFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSignUpCepBinding.inflate(inflater, container, false);
-        viewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
+        viewModel = new ViewModelProvider(this).get(UserViewModel.class);
         binding.continueButton.setOnClickListener(v -> {
             viewModel.getAddress(binding.textInputCep.getUnMasked()).enqueue(new Callback<Address>() {
                 @Override

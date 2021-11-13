@@ -1,4 +1,4 @@
-package com.aps.biometricauthapp.ui.fragments.signup;
+package com.aps.biometricauthapp.ui.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 
@@ -11,12 +11,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 import retrofit2.Call;
 
 @HiltViewModel
-public class SignUpViewModel extends ViewModel {
+public class UserViewModel extends ViewModel {
 
     private final AddressRepository repository;
 
     @Inject
-    public SignUpViewModel(AddressRepository repository) {
+    public UserViewModel(AddressRepository repository) {
         this.repository = repository;
     }
 

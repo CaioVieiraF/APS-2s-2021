@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.data.model.Address;
 import com.aps.biometricauthapp.databinding.FragmentSignUpAddressBinding;
+import com.aps.biometricauthapp.ui.viewmodel.UserViewModel;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -28,7 +29,7 @@ import retrofit2.Response;
 public class SignUpAddressFragment extends Fragment {
 
     private FragmentSignUpAddressBinding binding;
-    private SignUpViewModel viewModel;
+    private UserViewModel viewModel;
 
     public SignUpAddressFragment() {
     }
@@ -37,7 +38,7 @@ public class SignUpAddressFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSignUpAddressBinding.inflate(inflater, container, false);
-        viewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
+        viewModel = new ViewModelProvider(this).get(UserViewModel.class);
         Log.d("nicolas", getArguments().getString("cep"));
         viewModel.getAddress(getArguments().getString("cep")).enqueue(new Callback<Address>() {
             @Override
