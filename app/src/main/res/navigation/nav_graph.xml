@@ -43,6 +43,27 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="cpf"
+            app:argType="string" />
+        <argument
+            android:name="birthday"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <argument
+            android:name="cepMasked"
+            app:argType="string" />
+        <argument
+            android:name="cepRaw"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/signUpAccessLevelFragment"

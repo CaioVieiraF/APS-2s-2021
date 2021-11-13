@@ -10,12 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.data.model.Address;
 import com.aps.biometricauthapp.databinding.FragmentSignUpCepBinding;
 import com.aps.biometricauthapp.ui.viewmodel.UserViewModel;
-
-import java.util.Objects;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import retrofit2.Call;
@@ -49,9 +46,17 @@ public class SignUpCepFragment extends Fragment {
                         }
                     } catch (NullPointerException e) {
                         binding.textInputCepLayout.setErrorEnabled(false);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("cep", Objects.requireNonNull(binding.textInputCep.getUnMasked()));
-                        Navigation.findNavController(v).navigate(R.id.action_signUpCepFragment_to_signUpAddressFragment, bundle);
+                        SignUpCepFragmentDirections.ActionSignUpCepFragmentToSignUpAddressFragment action =
+                                SignUpCepFragmentDirections.actionSignUpCepFragmentToSignUpAddressFragment(
+                                        args.getName(),
+                                        args.getCpf(),
+                                        args.getBirthday(),
+                                        args.getEmail(),
+                                        args.getPhone(),
+                                        binding.textInputCep.getMasked(),
+                                        binding.textInputCep.getUnMasked()
+                                        );
+                        Navigation.findNavController(v).navigate(action);
                     }
                 }
 

@@ -2,7 +2,6 @@ package com.aps.biometricauthapp.ui.fragments.signup;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +28,7 @@ import retrofit2.Response;
 public class SignUpAddressFragment extends Fragment {
 
     private FragmentSignUpAddressBinding binding;
+    private SignUpAddressFragmentArgs args;
     private UserViewModel viewModel;
 
     public SignUpAddressFragment() {
@@ -39,17 +39,15 @@ public class SignUpAddressFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentSignUpAddressBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(UserViewModel.class);
-        Log.d("nicolas", getArguments().getString("cep"));
-        viewModel.getAddress(getArguments().getString("cep")).enqueue(new Callback<Address>() {
+        args = SignUpAddressFragmentArgs.fromBundle(getArguments());
+        viewModel.getAddress(args.getCepRaw()).enqueue(new Callback<Address>() {
             @Override
             public void onResponse(Call<Address> call, Response<Address> response) {
                 Address address = response.body();
                 binding.textInputPublicPlace.setText(address.getPublicPlace());
-//                binding.textInputAddressNumber.setText();
                 binding.textInputDistrict.setText(address.getDistrict());
                 binding.textInputUf.setText(address.getUf());
                 binding.textInputLocation.setText(address.getLocation());
-//                binding.textInputAddressComplement.setText(address.getComplement());
             }
 
             @Override
