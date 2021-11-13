@@ -52,8 +52,8 @@
                 android:id="@+id/textInputName"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:inputType="textPersonName|textCapWords"
                 android:hint="ex: João Silva"
-                android:capitalize="words"
                 android:padding="16dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,13 +83,14 @@
             app:endIconMode="clear_text"
             app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.santalu.maskara.widget.MaskEditText
                 android:id="@+id/textInputCpf"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                app:mask="___.___.___-__"
+                app:maskStyle="normal"
                 android:hint="ex: 123.456.789-00"
-                android:inputType="number|numberSigned|numberDecimal|text"
-                android:maxLength="11"
+                android:inputType="number"
                 android:padding="16dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -227,8 +228,10 @@
             app:endIconMode="clear_text"
             app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.santalu.maskara.widget.MaskEditText
                 android:id="@+id/textInputPhone"
+                app:mask="+55 (__) _____-____"
+                app:maskStyle="normal"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:hint="ex: +55 (11) 12347-8900"

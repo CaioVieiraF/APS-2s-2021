@@ -78,6 +78,13 @@ public class SignUpBasicInfoFragment extends Fragment implements DatePickerDialo
             if (!Objects.requireNonNull(binding.textInputEmailConfirmation.getText()).toString().equals(binding.textInputEmail.getText().toString()) && !TextUtils.isEmpty(binding.textInputEmailConfirmation.getText())) {
                 onError = true;
             }
+            if (!RegexUtils.isTel(binding.textInputPhone.getMasked()) && !binding.textInputPhone.isDone() && !TextUtils.isEmpty(binding.textInputPhone.getText())) {
+                onError = true;
+            }
+            // TODO: 13/11/2021 terminar essa validação de cpf
+            if (!binding.textInputCpf.isDone() && !TextUtils.isEmpty(binding.textInputCpf.getText())) {
+                onError = true;
+            }
         }
         return onError;
     }
@@ -98,6 +105,15 @@ public class SignUpBasicInfoFragment extends Fragment implements DatePickerDialo
             if (!Objects.requireNonNull(binding.textInputEmailConfirmation.getText()).toString().equals(binding.textInputEmail.getText().toString()) && !TextUtils.isEmpty(binding.textInputEmailConfirmation.getText())) {
                 binding.textInputEmailConfirmationLayout.setErrorEnabled(true);
                 binding.textInputEmailConfirmationLayout.setError("E-mail não correspondente!");
+            }
+            if (!RegexUtils.isTel(binding.textInputPhone.getMasked()) && !binding.textInputPhone.isDone() && !TextUtils.isEmpty(binding.textInputPhone.getText())) {
+                binding.textInputPhoneLayout.setErrorEnabled(true);
+                binding.textInputPhoneLayout.setError("Número de telefone inválido!");
+            }
+            // TODO: 13/11/2021 terminar essa validação de cpf
+            if (!binding.textInputCpf.isDone() && !TextUtils.isEmpty(binding.textInputCpf.getText())) {
+                binding.textInputCpfLayout.setErrorEnabled(true);
+                binding.textInputCpfLayout.setError("CPF inválido!");
             }
         }
     }
