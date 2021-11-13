@@ -5,7 +5,6 @@ import androidx.room.Entity;
 import com.aps.biometricauthapp.util.AccessLevel;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -13,11 +12,13 @@ import javax.inject.Inject;
 public class User {
     @Inject
     Address address;
+    private String cpf;
     private String name;
     private String email;
+    private String phone;
     private Date birthday;
     private String password;
-    private List<Date> loginActivity;
+    private Date[] loginActivity;
     private String accessLevelKey;
     private AccessLevel accessLevel;
 
@@ -25,16 +26,20 @@ public class User {
     }
 
     public User(Address address,
+                String cpf,
                 String name,
                 String email,
+                String phone,
                 Date birthday,
                 String password,
-                List<Date> loginActivity,
+                Date[] loginActivity,
                 String accessLevelKey,
                 AccessLevel accessLevel) {
         this.address = address;
+        this.cpf = cpf;
         this.name = name;
         this.email = email;
+        this.phone = phone;
         this.birthday = birthday;
         this.password = password;
         this.loginActivity = loginActivity;
@@ -48,6 +53,14 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getName() {
@@ -66,6 +79,14 @@ public class User {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public Date getBirthday() {
         return birthday;
     }
@@ -82,11 +103,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Date> getLoginActivity() {
+    public Date[] getLoginActivity() {
         return loginActivity;
     }
 
-    public void setLoginActivity(List<Date> loginActivity) {
+    public void setLoginActivity(Date[] loginActivity) {
         this.loginActivity = loginActivity;
     }
 
