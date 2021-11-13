@@ -38,7 +38,6 @@ public class SignUpAddressFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentSignUpAddressBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
-        Bundle bundle = new Bundle();
         Log.d("nicolas", getArguments().getString("cep"));
         viewModel.getAddress(getArguments().getString("cep")).enqueue(new Callback<Address>() {
             @Override
