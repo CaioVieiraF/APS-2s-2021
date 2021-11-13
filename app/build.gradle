@@ -34,6 +34,8 @@ android {
 }
 
 dependencies {
+    // Maskara
+    implementation 'com.github.santalu:maskara:1.0.0'
     // AndroidUtilCode
     implementation 'com.blankj:utilcodex:1.30.6'
     // Biometric
