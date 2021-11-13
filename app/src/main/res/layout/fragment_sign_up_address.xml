@@ -126,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:hint="ex: Apartamento 12"
-                android:inputType="text"
+                android:inputType="text|textCapWords"
                 android:padding="16dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
