@@ -27,7 +27,7 @@ public class SignUpCepFragment extends Fragment {
         binding = FragmentSignUpCepBinding.inflate(inflater, container, false);
         binding.continueButton.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putString("cep", Objects.requireNonNull(binding.textInputCep.getText()).toString());
+            bundle.putString("cep", Objects.requireNonNull(binding.textInputCep.getUnMasked()));
             Navigation.findNavController(v).navigate(R.id.action_signUpCepFragment_to_signUpAddressFragment, bundle);
         });
         return binding.getRoot();

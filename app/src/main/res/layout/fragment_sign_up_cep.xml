@@ -22,6 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
+
     <TextView
         android:id="@+id/cepTextView"
         android:layout_width="0dp"
@@ -54,13 +55,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.santalu.maskara.widget.MaskEditText
             android:id="@+id/textInputCep"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:hint="ex: 12345-678"
             android:inputType="number"
-            android:padding="16dp" />
+            android:padding="16dp"
+            app:mask="_____-___"
+            app:maskStyle="normal" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
