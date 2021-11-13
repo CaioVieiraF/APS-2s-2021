@@ -6,7 +6,7 @@ public class CPFValidation {
         int lastDigit = Integer.parseInt(""+cpf.charAt(10));
         int beforeLastDigit = Integer.parseInt(""+cpf.charAt(9));
 
-        return validateSize(cpf) || validateRepetition(cpf) || validateDigit(cpf,beforeLastDigit, false) || validateDigit(cpf,lastDigit, true);
+        return validateSize(cpf) && validateRepetition(cpf) && validateDigit(cpf,beforeLastDigit, false) && validateDigit(cpf,lastDigit, true);
     }
 
     public static boolean validateSize(String cpf) {
