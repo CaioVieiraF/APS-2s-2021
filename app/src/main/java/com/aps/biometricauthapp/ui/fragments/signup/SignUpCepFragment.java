@@ -26,6 +26,7 @@ import retrofit2.Response;
 public class SignUpCepFragment extends Fragment {
 
     private FragmentSignUpCepBinding binding;
+    private SignUpCepFragmentArgs args;
     private UserViewModel viewModel;
 
     public SignUpCepFragment() {
@@ -36,6 +37,7 @@ public class SignUpCepFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentSignUpCepBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        args = SignUpCepFragmentArgs.fromBundle(getArguments());
         binding.continueButton.setOnClickListener(v -> {
             viewModel.getAddress(binding.textInputCep.getUnMasked()).enqueue(new Callback<Address>() {
                 @Override

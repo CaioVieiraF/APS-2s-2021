@@ -13,7 +13,6 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.databinding.FragmentSignUpBasicInfoBinding;
 import com.aps.biometricauthapp.util.DatePickerFragment;
 import com.blankj.utilcode.util.RegexUtils;
@@ -49,7 +48,13 @@ public class SignUpBasicInfoFragment extends Fragment implements DatePickerDialo
                 setErrorOnTextInput();
             } else {
                 setErrorOnTextInput();
-                Navigation.findNavController(v).navigate(R.id.action_signUpBasicInfoFragment_to_signUpAddressFragment);
+                String name = binding.textInputName.getText().toString();
+                String cpf = binding.textInputCpf.getText().toString();
+                String birthday = binding.textInputBirthday.getText().toString();
+                String email = binding.textInputEmail.getText().toString();
+                String phone = binding.textInputPhone.getText().toString();
+                SignUpBasicInfoFragmentDirections.ActionSignUpBasicInfoFragmentToSignUpCepFragment action = SignUpBasicInfoFragmentDirections.actionSignUpBasicInfoFragmentToSignUpCepFragment(name, cpf, birthday, email, phone);
+                Navigation.findNavController(v).navigate(action);
             }
         });
     }

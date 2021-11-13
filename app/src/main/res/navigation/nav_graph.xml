@@ -24,7 +24,7 @@
         android:label="fragment_sign_up_basic_info"
         tools:layout="@layout/fragment_sign_up_basic_info" >
         <action
-            android:id="@+id/action_signUpBasicInfoFragment_to_signUpAddressFragment"
+            android:id="@+id/action_signUpBasicInfoFragment_to_signUpCepFragment"
             app:destination="@id/signUpCepFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -97,5 +97,20 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="cpf"
+            app:argType="string" />
+        <argument
+            android:name="birthday"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
     </fragment>
 </navigation>
