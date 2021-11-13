@@ -1,19 +1,20 @@
 package com.aps.biometricauthapp.data.model;
 
+import androidx.room.Embedded;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import com.aps.biometricauthapp.util.AccessLevel;
 
 import java.util.Date;
 
-import javax.inject.Inject;
-
-@Entity
+@Entity(tableName = "user_table")
 public class User {
-    @Inject
-    Address address;
+    @Embedded
+    private Address address;
     private String cpf;
     private String name;
+    @PrimaryKey
     private String email;
     private String phone;
     private Date birthday;
