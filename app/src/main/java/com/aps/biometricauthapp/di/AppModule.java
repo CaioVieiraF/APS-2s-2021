@@ -1,6 +1,7 @@
 package com.aps.biometricauthapp.di;
 
 import com.aps.biometricauthapp.data.api.ViaCepService;
+import com.aps.biometricauthapp.data.repository.AddressRepository;
 
 import javax.inject.Singleton;
 
@@ -16,6 +17,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 @InstallIn(SingletonComponent.class)
 public final class AppModule {
+
+    @Provides
+    @Singleton
+    static AddressRepository provideAddressRepository(ViaCepService viaCepService) {
+        return new AddressRepository(viaCepService);
+    }
 
     @Provides
     @Singleton
