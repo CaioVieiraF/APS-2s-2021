@@ -29,6 +29,7 @@ public class SignUpAccessLevelFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSignUpAccessLevelBinding.inflate(inflater, container, false);
+        accessLevel = AccessLevel.PUBLIC;
         args = SignUpAccessLevelFragmentArgs.fromBundle(getArguments());
         setView();
         return binding.getRoot();
