@@ -30,7 +30,7 @@ public class UserViewModel extends ViewModel {
         return repository.getAddress(cep);
     }
 
-    public void inserUser(User user) {
+    public void insertUser(User user) {
         repository.insertUser(user);
     }
 
