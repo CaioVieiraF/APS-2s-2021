@@ -1,39 +1,37 @@
 package com.aps.biometricauthapp.ui.fragments.login;
 
-import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG;
-import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_WEAK;
-import static androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL;
-
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.biometric.BiometricPrompt;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.aps.biometricauthapp.ui.activities.HomeActivity;
 import com.aps.biometricauthapp.R;
+import com.aps.biometricauthapp.data.model.User;
 import com.aps.biometricauthapp.databinding.FragmentLoginBinding;
+import com.aps.biometricauthapp.ui.activities.HomeActivity;
+import com.aps.biometricauthapp.ui.viewmodel.UserViewModel;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.RegexUtils;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.Calendar;
 import java.util.Objects;
 import java.util.concurrent.Executor;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class LoginFragment extends Fragment {
 
-    private FragmentLoginBinding binding;
     private Executor executor;
-    private BiometricPrompt biometricPrompt;
-    private BiometricPrompt.PromptInfo promptInfo;
+    private UserViewModel viewModel;
+    private FragmentLoginBinding binding;
 
     public LoginFragment() {
     }
@@ -42,63 +40,41 @@ public class LoginFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
-        executor = ContextCompat.getMainExecutor(requireActivity());
-        biometricPrompt = new BiometricPrompt(requireActivity(), executor, new BiometricPrompt.AuthenticationCallback() {
-            @Override
-            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
-                super.onAuthenticationError(errorCode, errString);
-                Toast.makeText(getActivity(), errString, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
-                super.onAuthenticationSucceeded(result);
-                Toast.makeText(getActivity(), Calendar.getInstance().getTime().toLocaleString(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAuthenticationFailed() {
-                super.onAuthenticationFailed();
-                Toast.makeText(getActivity(), "Falhou", Toast.LENGTH_SHORT).show();
-            }
-        });
-        promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Ministério do Meio Ambiente")
-                .setSubtitle("Desbloqueie seu app")
-                .setAllowedAuthenticators(BIOMETRIC_STRONG | BIOMETRIC_WEAK | DEVICE_CREDENTIAL)
-                .setConfirmationRequired(true)
-                .build();
-        // TODO: 01/11/2021 Verificar como adicionar a validação biometrica automaticamente ao entrar no app 
-//        biometricPrompt.authenticate(promptInfo);
-//        binding.textInputEmail.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                if (RegexUtils.isEmail(s)) {
-//                    binding.textInputEmailLayout.setErrorEnabled(false);
-//                } else {
-//                    binding.textInputEmailLayout.setError("Formato de e-mail inválido");
-//                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//            }
-//        });
-//        binding.loginButton.setOnClickListener(v -> {
-//            if (isTextInputEmpty()) {
-//
-//            }
-//        });
+        viewModel = new ViewModelProvider(this).get(UserViewModel.class);
         binding.loginButton.setOnClickListener(v -> {
-            ActivityUtils.startActivity(HomeActivity.class);
-            requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            viewModel.getGetAllUsers().observe(getViewLifecycleOwner(), users -> {
+                Log.d("nic", users.toString());
+                if (users.isEmpty()) {
+                    binding.textInputEmailLayout.setErrorEnabled(true);
+                    binding.textInputPasswordLayout.setErrorEnabled(true);
+                    binding.textInputEmailLayout.setError("Nenhum usuário cadastrado!");
+                    binding.textInputPasswordLayout.setError("Nenhum usuário cadastrado!");
+                }
+                for (User user : users) {
+                    if (user.getEmail().equals(binding.textInputEmail.getText().toString()))
+                        binding.textInputEmailLayout.setErrorEnabled(false);
+                    if (user.getEmail().equals(binding.textInputEmail.getText().toString()) && user.getPassword().equals(binding.textInputPassword.getText().toString())) {
+                        binding.textInputPasswordLayout.setErrorEnabled(false);
+                        ActivityUtils.startActivity(HomeActivity.class);
+                        requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    } else {
+                        binding.textInputEmailLayout.setErrorEnabled(true);
+                        binding.textInputPasswordLayout.setErrorEnabled(true);
+                        if (!user.getEmail().equals(binding.textInputEmail.getText().toString()) && user.getPassword().equals(binding.textInputPassword.getText().toString())) {
+                            binding.textInputPasswordLayout.setErrorEnabled(true);
+                        }
+                        if (!user.getEmail().equals(binding.textInputEmail.getText().toString()))
+                            binding.textInputEmailLayout.setError("E-mail incorreto!");
+                        if (!user.getPassword().equals(binding.textInputPassword.getText().toString()))
+                            binding.textInputPasswordLayout.setError("Senha incorreta!");
+                        if (!user.getEmail().equals(binding.textInputEmail.getText().toString()) && user.getPassword().equals(binding.textInputPassword.getText().toString())) {
+                            binding.textInputPasswordLayout.setError("Senha incorreta");
+                        }
+                    }
+                }
+            });
         });
         binding.registerButton.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_signUpBasicInfoFragment));
-//        biometricPrompt.authenticate(promptInfo);
         return binding.getRoot();
     }
 
