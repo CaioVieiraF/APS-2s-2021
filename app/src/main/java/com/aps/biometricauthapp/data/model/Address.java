@@ -2,8 +2,6 @@ package com.aps.biometricauthapp.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import javax.inject.Inject;
-
 public class Address {
     @SerializedName("cep")
     private String cep;
@@ -28,32 +26,18 @@ public class Address {
     @SerializedName("erro")
     private Boolean error;
 
-    public Address() {
-    }
-
-    @Inject
     public Address(String cep,
                    String publicPlace,
                    String complement,
                    String district,
                    String location,
-                   String uf,
-                   String ibge,
-                   String gia,
-                   String ddd,
-                   String siafi,
-                   Boolean error) {
+                   String uf) {
         this.cep = cep;
         this.publicPlace = publicPlace;
         this.complement = complement;
         this.district = district;
         this.location = location;
         this.uf = uf;
-        this.ibge = ibge;
-        this.gia = gia;
-        this.ddd = ddd;
-        this.siafi = siafi;
-        this.error = error;
     }
 
     public String getCep() {
@@ -142,5 +126,17 @@ public class Address {
 
     public void setError(Boolean error) {
         this.error = error;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "cep='" + cep + '\'' +
+                ", publicPlace='" + publicPlace + '\'' +
+                ", complement='" + complement + '\'' +
+                ", district='" + district + '\'' +
+                ", location='" + location + '\'' +
+                ", uf='" + uf + '\'' +
+                '}';
     }
 }

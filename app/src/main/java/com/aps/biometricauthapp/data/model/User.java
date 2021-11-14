@@ -102,4 +102,22 @@ public class User {
     public Boolean getBiometricEnabled() {
         return isBiometricEnabled;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", address=" + address +
+                ", cpf='" + cpf + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", password='" + password + '\'' +
+                ", loginActivity=" + loginActivity +
+                ", accessLevelKey='" + accessLevelKey + '\'' +
+                ", accessLevel=" + accessLevel +
+                ", isBiometricEnabled=" + isBiometricEnabled +
+                '}';
+    }
 }
