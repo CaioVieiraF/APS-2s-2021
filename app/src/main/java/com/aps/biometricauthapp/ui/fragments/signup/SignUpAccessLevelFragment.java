@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.databinding.FragmentSignUpAccessLevelBinding;
+import com.aps.biometricauthapp.util.AccessLevel;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -20,6 +20,7 @@ public class SignUpAccessLevelFragment extends Fragment {
     
     private FragmentSignUpAccessLevelBinding binding;
     private SignUpAccessLevelFragmentArgs args;
+    private AccessLevel accessLevel;
 
     public SignUpAccessLevelFragment() {
     }
@@ -43,7 +44,11 @@ public class SignUpAccessLevelFragment extends Fragment {
             if (checkedId == binding.levelOneRadioButton.getId() || checkedId == binding.levelTwoRadioButton.getId()) {
                 binding.textInputPasswordLayout.setVisibility(View.VISIBLE);
                 binding.textInputPassword.setText("");
+                if (checkedId == binding.levelOneRadioButton.getId()) accessLevel = AccessLevel.DIVISION_DIRECTOR;
+                if (checkedId == binding.levelTwoRadioButton.getId()) accessLevel = AccessLevel.ENVIRONMENT_MINISTER;
             } else {
+                accessLevel = AccessLevel.PUBLIC;
+                binding.textInputPassword.setText("");
                 binding.textInputPasswordLayout.setVisibility(View.GONE);
             }
         });
@@ -55,7 +60,23 @@ public class SignUpAccessLevelFragment extends Fragment {
                 setErrorOnTextInput();
             } else {
                 setErrorOnTextInput();
-                Navigation.findNavController(v).navigate(R.id.action_signUpAccessLevelFragment_to_signUpPasswordFragment);
+                SignUpAccessLevelFragmentDirections.ActionSignUpAccessLevelFragmentToSignUpPasswordFragment action =
+                        SignUpAccessLevelFragmentDirections.actionSignUpAccessLevelFragmentToSignUpPasswordFragment(
+                                args.getName(),
+                                args.getCpf(),
+                                args.getBirthday(),
+                                args.getEmail(),
+                                args.getPhone(),
+                                args.getCepMasked(),
+                                args.getPublicPlace(),
+                                args.getAddressNumberAndComplement(),
+                                args.getDistrict(),
+                                args.getLocation(),
+                                args.getUf(),
+                                accessLevel,
+                                binding.textInputPassword.getText().toString()
+                        );
+                Navigation.findNavController(v).navigate(action);
             }
         });
     }

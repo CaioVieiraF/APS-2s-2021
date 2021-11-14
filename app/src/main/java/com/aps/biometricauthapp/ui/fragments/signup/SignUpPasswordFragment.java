@@ -17,7 +17,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 public class SignUpPasswordFragment extends Fragment {
+
     private FragmentSignUpPasswordBinding binding;
+    private SignUpPasswordFragmentArgs args;
 
     public SignUpPasswordFragment() {
     }
@@ -26,6 +28,7 @@ public class SignUpPasswordFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSignUpPasswordBinding.inflate(inflater, container, false);
+        args = SignUpPasswordFragmentArgs.fromBundle(getArguments());
         setView();
         return binding.getRoot();
     }
@@ -76,7 +79,7 @@ public class SignUpPasswordFragment extends Fragment {
             }
             if (!Objects.requireNonNull(binding.textInputPasswordConfirmation.getText()).toString().equals(binding.textInputPassword.getText().toString()) && !TextUtils.isEmpty(binding.textInputPasswordConfirmation.getText())) {
                 binding.textInputPasswordConfirmationLayout.setErrorEnabled(true);
-                binding.textInputPasswordConfirmationLayout.setError("Senhas não coincidem!");
+                binding.textInputPasswordConfirmationLayout.setError("Senhas não correspondem!");
             }
         }
     }
