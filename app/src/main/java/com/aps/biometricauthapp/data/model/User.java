@@ -6,10 +6,11 @@ import androidx.room.PrimaryKey;
 
 import com.aps.biometricauthapp.util.AccessLevel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Entity(tableName = "user_table")
-public class User {
+public class User implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private Integer id;
     @Embedded

@@ -2,7 +2,9 @@ package com.aps.biometricauthapp.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
     @SerializedName("cep")
     private String cep;
     @SerializedName("logradouro")
