@@ -13,6 +13,8 @@ import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.databinding.FragmentSignUpSuccessBinding;
 
 public class SignUpSuccessFragment extends Fragment {
+    
+    private SignUpSuccessFragmentArgs args;
     private FragmentSignUpSuccessBinding binding;
 
     public SignUpSuccessFragment() {
@@ -22,6 +24,7 @@ public class SignUpSuccessFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSignUpSuccessBinding.inflate(inflater, container, false);
+        args = SignUpSuccessFragmentArgs.fromBundle(getArguments());
         binding.loginButton.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_signUpSuccessFragment_to_loginFragment);
         });

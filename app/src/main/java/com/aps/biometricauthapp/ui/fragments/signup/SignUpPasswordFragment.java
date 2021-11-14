@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.databinding.FragmentSignUpPasswordBinding;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -43,7 +42,24 @@ public class SignUpPasswordFragment extends Fragment {
                 setErrorOnTextInput();
             } else {
                 setErrorOnTextInput();
-                Navigation.findNavController(v).navigate(R.id.action_signUpPasswordFragment_to_signUpSuccessFragment);
+                SignUpPasswordFragmentDirections.ActionSignUpPasswordFragmentToSignUpSuccessFragment action =
+                        SignUpPasswordFragmentDirections.actionSignUpPasswordFragmentToSignUpSuccessFragment(
+                                args.getName(),
+                                args.getCpf(),
+                                args.getBirthday(),
+                                args.getEmail(),
+                                args.getPhone(),
+                                args.getCepMasked(),
+                                args.getPublicPlace(),
+                                args.getAddressNumberAndComplement(),
+                                args.getDistrict(),
+                                args.getLocation(),
+                                args.getUf(),
+                                args.getAccessLevel(),
+                                args.getAccessLevelKey(),
+                                binding.textInputPassword.getText().toString()
+                        );
+                Navigation.findNavController(v).navigate(action);
             }
         });
     }
