@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.room.Room;
 
 import com.aps.biometricauthapp.data.api.ViaCepService;
+import com.aps.biometricauthapp.data.db.UserDao;
 import com.aps.biometricauthapp.data.db.UserDatabase;
 import com.aps.biometricauthapp.data.repository.UserRepository;
 
@@ -26,8 +27,8 @@ public final class AppModule {
 
     @Provides
     @Singleton
-    static UserRepository provideUserRepository(ViaCepService viaCepService) {
-        return new UserRepository(viaCepService);
+    static UserRepository provideUserRepository(ViaCepService viaCepService, UserDao userDao) {
+        return new UserRepository(viaCepService, userDao);
     }
 
     @Provides
@@ -54,6 +55,12 @@ public final class AppModule {
         return new OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .build();
+    }
+
+    @Provides
+    @Singleton
+    static UserDao provideUserDao(UserDatabase userDatabase) {
+        return userDatabase.userDao();
     }
 
     @Provides
