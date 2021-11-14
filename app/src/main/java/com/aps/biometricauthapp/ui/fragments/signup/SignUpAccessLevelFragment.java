@@ -17,7 +17,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 public class SignUpAccessLevelFragment extends Fragment {
+    
     private FragmentSignUpAccessLevelBinding binding;
+    private SignUpAccessLevelFragmentArgs args;
 
     public SignUpAccessLevelFragment() {
     }
@@ -26,6 +28,7 @@ public class SignUpAccessLevelFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSignUpAccessLevelBinding.inflate(inflater, container, false);
+        args = SignUpAccessLevelFragmentArgs.fromBundle(getArguments());
         setView();
         return binding.getRoot();
     }

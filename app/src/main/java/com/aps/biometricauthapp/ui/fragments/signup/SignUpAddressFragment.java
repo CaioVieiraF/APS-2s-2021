@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.data.model.Address;
 import com.aps.biometricauthapp.databinding.FragmentSignUpAddressBinding;
 import com.aps.biometricauthapp.ui.viewmodel.UserViewModel;
@@ -59,7 +58,21 @@ public class SignUpAddressFragment extends Fragment {
             if (isTextInputEmpty()) {
                 setErrorOnTextInput();
             } else {
-                Navigation.findNavController(v).navigate(R.id.action_signUpAddressFragment_to_signUpAccessLevelFragment);
+                SignUpAddressFragmentDirections.ActionSignUpAddressFragmentToSignUpAccessLevelFragment action =
+                        SignUpAddressFragmentDirections.actionSignUpAddressFragmentToSignUpAccessLevelFragment(
+                                args.getName(),
+                                args.getCpf(),
+                                args.getBirthday(),
+                                args.getEmail(),
+                                args.getPhone(),
+                                args.getCepMasked(),
+                                binding.textInputPublicPlace.getText().toString(),
+                                binding.textInputAddressNumber.getText().toString() + ", " + binding.textInputAddressComplement.getText().toString(),
+                                binding.textInputDistrict.getText().toString(),
+                                binding.textInputLocation.getText().toString(),
+                                binding.textInputUf.getText().toString()
+                                );
+                Navigation.findNavController(v).navigate(action);
             }
         });
         return binding.getRoot();
