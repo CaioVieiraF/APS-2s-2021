@@ -6,7 +6,7 @@ import androidx.room.Room;
 
 import com.aps.biometricauthapp.data.api.ViaCepService;
 import com.aps.biometricauthapp.data.db.UserDatabase;
-import com.aps.biometricauthapp.data.repository.AddressRepository;
+import com.aps.biometricauthapp.data.repository.UserRepository;
 
 import javax.inject.Singleton;
 
@@ -26,8 +26,8 @@ public final class AppModule {
 
     @Provides
     @Singleton
-    static AddressRepository provideAddressRepository(ViaCepService viaCepService) {
-        return new AddressRepository(viaCepService);
+    static UserRepository provideUserRepository(ViaCepService viaCepService) {
+        return new UserRepository(viaCepService);
     }
 
     @Provides

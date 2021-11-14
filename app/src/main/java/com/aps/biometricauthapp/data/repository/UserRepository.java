@@ -9,12 +9,12 @@ import javax.inject.Singleton;
 import retrofit2.Call;
 
 @Singleton
-public class AddressRepository {
+public class UserRepository {
 
     private final ViaCepService viaCepService;
 
     @Inject
-    public AddressRepository(ViaCepService viaCepService) {
+    public UserRepository(ViaCepService viaCepService) {
         this.viaCepService = viaCepService;
     }
 

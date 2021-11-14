@@ -3,7 +3,7 @@ package com.aps.biometricauthapp.ui.viewmodel;
 import androidx.lifecycle.ViewModel;
 
 import com.aps.biometricauthapp.data.model.Address;
-import com.aps.biometricauthapp.data.repository.AddressRepository;
+import com.aps.biometricauthapp.data.repository.UserRepository;
 
 import javax.inject.Inject;
 
@@ -13,10 +13,10 @@ import retrofit2.Call;
 @HiltViewModel
 public class UserViewModel extends ViewModel {
 
-    private final AddressRepository repository;
+    private final UserRepository repository;
 
     @Inject
-    public UserViewModel(AddressRepository repository) {
+    public UserViewModel(UserRepository repository) {
         this.repository = repository;
     }
 
