@@ -1,6 +1,11 @@
 package com.aps.biometricauthapp.di;
 
+import android.content.Context;
+
+import androidx.room.Room;
+
 import com.aps.biometricauthapp.data.api.ViaCepService;
+import com.aps.biometricauthapp.data.db.UserDatabase;
 import com.aps.biometricauthapp.data.repository.AddressRepository;
 
 import javax.inject.Singleton;
@@ -8,6 +13,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
+import dagger.hilt.android.qualifiers.ApplicationContext;
 import dagger.hilt.components.SingletonComponent;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -48,5 +54,11 @@ public final class AppModule {
         return new OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .build();
+    }
+
+    @Provides
+    @Singleton
+    static UserDatabase provideUserDatabase(@ApplicationContext Context context) {
+        return Room.databaseBuilder(context, UserDatabase.class, "user_database").build();
     }
 }
