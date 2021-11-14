@@ -1,6 +1,5 @@
 package com.aps.biometricauthapp.data.model;
 
-import androidx.annotation.NonNull;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -11,12 +10,12 @@ import java.util.ArrayList;
 
 @Entity(tableName = "user_table")
 public class User {
+    @PrimaryKey(autoGenerate = true)
+    private Integer id;
     @Embedded
     private Address address;
     private String cpf;
     private String name;
-    @NonNull
-    @PrimaryKey
     private String email;
     private String phone;
     private String birthday;
@@ -26,17 +25,19 @@ public class User {
     private AccessLevel accessLevel;
     private Boolean isBiometricEnabled;
 
-    public User(Address address,
-                String cpf,
-                String name,
-                String email,
-                String phone,
-                String birthday,
-                String password,
-                ArrayList<String> loginActivity,
-                String accessLevelKey,
-                AccessLevel accessLevel,
-                Boolean isBiometricEnabled) {
+    public User(
+            Address address,
+            String cpf,
+            String name,
+            String email,
+            String phone,
+            String birthday,
+            String password,
+            ArrayList<String> loginActivity,
+            String accessLevelKey,
+            AccessLevel accessLevel,
+            Boolean isBiometricEnabled
+    ) {
         this.address = address;
         this.cpf = cpf;
         this.name = name;
@@ -50,91 +51,55 @@ public class User {
         this.isBiometricEnabled = isBiometricEnabled;
     }
 
-    public Address getAddress() {
-        return address;
+    public Integer getId() {
+        return id;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Address getAddress() {
+        return address;
     }
 
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPhone() {
         return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public ArrayList<String> getLoginActivity() {
         return loginActivity;
     }
 
-    public void setLoginActivity(ArrayList<String> loginActivity) {
-        this.loginActivity = loginActivity;
-    }
-
     public String getAccessLevelKey() {
         return accessLevelKey;
-    }
-
-    public void setAccessLevelKey(String accessLevelKey) {
-        this.accessLevelKey = accessLevelKey;
     }
 
     public AccessLevel getAccessLevel() {
         return accessLevel;
     }
 
-    public void setAccessLevel(AccessLevel accessLevel) {
-        this.accessLevel = accessLevel;
-    }
-
     public Boolean getBiometricEnabled() {
         return isBiometricEnabled;
-    }
-
-    public void setBiometricEnabled(Boolean biometricEnabled) {
-        isBiometricEnabled = biometricEnabled;
     }
 }
