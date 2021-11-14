@@ -1,12 +1,13 @@
 package com.aps.biometricauthapp.data.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.aps.biometricauthapp.util.AccessLevel;
 
-import java.util.Date;
+import java.util.ArrayList;
 
 @Entity(tableName = "user_table")
 public class User {
@@ -14,14 +15,16 @@ public class User {
     private Address address;
     private String cpf;
     private String name;
+    @NonNull
     @PrimaryKey
     private String email;
     private String phone;
-    private Date birthday;
+    private String birthday;
     private String password;
-    private Date[] loginActivity;
+    private ArrayList<String> loginActivity;
     private String accessLevelKey;
     private AccessLevel accessLevel;
+    private Boolean isBiometricEnabled;
 
     public User() {
     }
@@ -31,11 +34,12 @@ public class User {
                 String name,
                 String email,
                 String phone,
-                Date birthday,
+                String birthday,
                 String password,
-                Date[] loginActivity,
+                ArrayList<String> loginActivity,
                 String accessLevelKey,
-                AccessLevel accessLevel) {
+                AccessLevel accessLevel,
+                Boolean isBiometricEnabled) {
         this.address = address;
         this.cpf = cpf;
         this.name = name;
@@ -46,6 +50,7 @@ public class User {
         this.loginActivity = loginActivity;
         this.accessLevelKey = accessLevelKey;
         this.accessLevel = accessLevel;
+        this.isBiometricEnabled = isBiometricEnabled;
     }
 
     public Address getAddress() {
@@ -88,11 +93,11 @@ public class User {
         this.phone = phone;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -104,11 +109,11 @@ public class User {
         this.password = password;
     }
 
-    public Date[] getLoginActivity() {
+    public ArrayList<String> getLoginActivity() {
         return loginActivity;
     }
 
-    public void setLoginActivity(Date[] loginActivity) {
+    public void setLoginActivity(ArrayList<String> loginActivity) {
         this.loginActivity = loginActivity;
     }
 
@@ -126,5 +131,13 @@ public class User {
 
     public void setAccessLevel(AccessLevel accessLevel) {
         this.accessLevel = accessLevel;
+    }
+
+    public Boolean getBiometricEnabled() {
+        return isBiometricEnabled;
+    }
+
+    public void setBiometricEnabled(Boolean biometricEnabled) {
+        isBiometricEnabled = biometricEnabled;
     }
 }
