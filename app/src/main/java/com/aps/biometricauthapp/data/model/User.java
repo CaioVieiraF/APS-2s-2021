@@ -26,9 +26,6 @@ public class User {
     private AccessLevel accessLevel;
     private Boolean isBiometricEnabled;
 
-    public User() {
-    }
-
     public User(Address address,
                 String cpf,
                 String name,
