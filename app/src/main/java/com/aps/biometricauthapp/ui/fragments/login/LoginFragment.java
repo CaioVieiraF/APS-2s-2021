@@ -43,8 +43,9 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
         sharedPreferences = getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        setUserAndPassword();
         binding.rememberCredentialsSwitch.setChecked(sharedPreferences.getBoolean("switch", binding.rememberCredentialsSwitch.isChecked()));
+        clearUser();
+        setUserAndPassword();
         binding.rememberCredentialsSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> sharedPreferences.edit().putBoolean("switch", isChecked).apply());
         viewModel = new ViewModelProvider(this).get(UserViewModel.class);
         binding.loginButton.setOnClickListener(v -> validateUser());
@@ -57,11 +58,15 @@ public class LoginFragment extends Fragment {
         binding.textInputPassword.setText(sharedPreferences.getString("password", null));
     }
 
-    private void saveOrClearUser() {
+    private void saveUser() {
         if (binding.rememberCredentialsSwitch.isChecked()) {
             sharedPreferences.edit().putString("email", binding.textInputEmail.getText().toString()).apply();
             sharedPreferences.edit().putString("password", binding.textInputPassword.getText().toString()).apply();
-        } else {
+        }
+    }
+
+    private void clearUser() {
+        if (!binding.rememberCredentialsSwitch.isChecked()) {
             sharedPreferences.edit().remove("email").apply();
             sharedPreferences.edit().remove("password").apply();
         }
@@ -95,7 +100,7 @@ public class LoginFragment extends Fragment {
 
     private void ifUserAndPasswordIsCorrect(User user) {
         binding.textInputPasswordLayout.setErrorEnabled(false);
-        saveOrClearUser();
+        saveUser();
         Bundle bundle = new Bundle();
         bundle.putSerializable("user", user);
         ActivityUtils.startActivity(bundle, HomeActivity.class);
