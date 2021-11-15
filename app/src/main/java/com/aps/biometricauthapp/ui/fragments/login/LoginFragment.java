@@ -55,7 +55,9 @@ public class LoginFragment extends Fragment {
                         binding.textInputEmailLayout.setErrorEnabled(false);
                     if (user.getEmail().equals(binding.textInputEmail.getText().toString()) && user.getPassword().equals(binding.textInputPassword.getText().toString())) {
                         binding.textInputPasswordLayout.setErrorEnabled(false);
-                        ActivityUtils.startActivity(HomeActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("user", user);
+                        ActivityUtils.startActivity(bundle, HomeActivity.class);
                         requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     } else {
                         binding.textInputEmailLayout.setErrorEnabled(true);
