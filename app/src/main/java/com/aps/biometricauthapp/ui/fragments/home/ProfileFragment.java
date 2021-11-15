@@ -22,6 +22,7 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         binding.userData.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_userDataFragment));
         binding.userAddress.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_userAddressFragment));
+        binding.userAccessAndToken.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_userAccessLevelFragment));
         return binding.getRoot();
     }
 }

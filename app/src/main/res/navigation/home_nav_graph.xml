@@ -29,6 +29,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_userAccessLevelFragment"
+            app:destination="@id/userAccessLevelFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/userAddressFragment"
@@ -40,4 +47,9 @@
         android:name="com.aps.biometricauthapp.ui.fragments.home.profile.UserDataFragment"
         android:label="fragment_user_data"
         tools:layout="@layout/fragment_user_data" />
+    <fragment
+        android:id="@+id/userAccessLevelFragment"
+        android:name="com.aps.biometricauthapp.ui.fragments.home.profile.UserAccessLevelFragment"
+        android:label="fragment_user_access_level"
+        tools:layout="@layout/fragment_user_access_level" />
 </navigation>
