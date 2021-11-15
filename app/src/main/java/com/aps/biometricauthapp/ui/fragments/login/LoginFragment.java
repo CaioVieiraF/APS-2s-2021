@@ -1,5 +1,9 @@
 package com.aps.biometricauthapp.ui.fragments.login;
 
+import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG;
+import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_WEAK;
+import static androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,8 +12,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -25,6 +32,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.Executor;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -34,6 +42,10 @@ public class LoginFragment extends Fragment {
     private UserViewModel viewModel;
     private FragmentLoginBinding binding;
     private SharedPreferences sharedPreferences;
+
+    private Executor executor;
+    private BiometricPrompt biometricPrompt;
+    private BiometricPrompt.PromptInfo promptInfo;
 
     public LoginFragment() {
     }
@@ -48,6 +60,7 @@ public class LoginFragment extends Fragment {
         setUserAndPassword();
         binding.rememberCredentialsSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> sharedPreferences.edit().putBoolean("switch", isChecked).apply());
         viewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        automaticAutheticate();
         binding.loginButton.setOnClickListener(v -> validateUser());
         binding.registerButton.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_signUpBasicInfoFragment));
         return binding.getRoot();
@@ -75,12 +88,12 @@ public class LoginFragment extends Fragment {
     private void validateUser() {
         setErrorOnTextInput();
         viewModel.getGetAllUsers().observe(getViewLifecycleOwner(), users -> {
-            Log.d("nic", users.toString());
             ifUsersIsEmpty(users);
             for (User user : users) {
                 if (user.getEmail().equals(binding.textInputEmail.getText().toString()))
                     binding.textInputEmailLayout.setErrorEnabled(false);
                 if (user.getEmail().equals(binding.textInputEmail.getText().toString()) && user.getPassword().equals(binding.textInputPassword.getText().toString())) {
+                    Log.d("nic", user.toString());
                     ifUserAndPasswordIsCorrect(user);
                 } else {
                     ifUserOrPasswordIsIncorrect(user);
@@ -88,6 +101,19 @@ public class LoginFragment extends Fragment {
             }
         });
     }
+
+    private void automaticAutheticate() {
+        String email = sharedPreferences.getString("email", null);
+        String password = sharedPreferences.getString("password", null);
+        viewModel.getGetAllUsers().observe(getViewLifecycleOwner(), users ->{
+            for (User user : users) {
+                if (user.getEmail().equals(email) && user.getPassword().equals(password) && user.getBiometricEnabled()) {
+                    authenticate(user);
+                }
+            }
+        });
+    }
+
 
     private void ifUsersIsEmpty(List<User> users) {
         if (users.isEmpty()) {
@@ -140,5 +166,39 @@ public class LoginFragment extends Fragment {
                 textInputLayout.setErrorEnabled(false);
             }
         }
+    }
+
+    public void authenticate(User user) {
+    executor = ContextCompat.getMainExecutor(requireActivity());
+    biometricPrompt = new BiometricPrompt(requireActivity(), executor, new BiometricPrompt.AuthenticationCallback() {
+        @Override
+        public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+            super.onAuthenticationError(errorCode, errString);
+            Toast.makeText(getActivity(), errString, Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+            super.onAuthenticationSucceeded(result);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("user", user);
+            ActivityUtils.startActivity(bundle, HomeActivity.class);
+            requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
+
+        @Override
+        public void onAuthenticationFailed() {
+            super.onAuthenticationFailed();
+            Toast.makeText(getActivity(), "Falhou", Toast.LENGTH_SHORT).show();
+        }
+    });
+    promptInfo = new BiometricPrompt.PromptInfo.Builder()
+            .setTitle("Ministério do Meio Ambiente")
+                .setSubtitle("Desbloqueie seu app")
+                .setAllowedAuthenticators(BIOMETRIC_STRONG | BIOMETRIC_WEAK | DEVICE_CREDENTIAL)
+                .setConfirmationRequired(true)
+                .build();
+
+        biometricPrompt.authenticate(promptInfo);
     }
 }
