@@ -11,11 +11,6 @@
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
     <fragment
-        android:id="@+id/savedFragment"
-        android:name="com.aps.biometricauthapp.ui.fragments.home.SavedFragment"
-        android:label="fragment_saved"
-        tools:layout="@layout/fragment_saved" />
-    <fragment
         android:id="@+id/profileFragment"
         android:name="com.aps.biometricauthapp.ui.fragments.home.ProfileFragment"
         android:label="fragment_profile"

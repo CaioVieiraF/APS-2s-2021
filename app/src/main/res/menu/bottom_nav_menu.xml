@@ -6,10 +6,6 @@
         android:icon="@drawable/ic_info"
         android:title="Info" />
     <item
-        android:id="@+id/savedFragment"
-        android:icon="@drawable/ic_saved"
-        android:title="Salvo" />
-    <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_user_profile"
         android:title="Perfil" />
