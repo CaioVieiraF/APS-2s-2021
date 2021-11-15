@@ -20,6 +20,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
+        binding.userData.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_userDataFragment));
         binding.userAddress.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_userAddressFragment));
         return binding.getRoot();
     }
