@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.room.Room;
 
+import com.aps.biometricauthapp.data.api.JsonPlaceHolderService;
 import com.aps.biometricauthapp.data.api.ViaCepService;
 import com.aps.biometricauthapp.data.db.UserDao;
 import com.aps.biometricauthapp.data.db.UserDatabase;
@@ -27,8 +28,8 @@ public final class AppModule {
 
     @Provides
     @Singleton
-    static UserRepository provideUserRepository(ViaCepService viaCepService, UserDao userDao) {
-        return new UserRepository(viaCepService, userDao);
+    static UserRepository provideUserRepository(ViaCepService viaCepService, JsonPlaceHolderService placeHolderService, UserDao userDao) {
+        return new UserRepository(viaCepService, placeHolderService, userDao);
     }
 
     @Provides
@@ -40,6 +41,17 @@ public final class AppModule {
                 .client(client)
                 .build()
                 .create(ViaCepService.class);
+    }
+
+    @Provides
+    @Singleton
+    static JsonPlaceHolderService provideJsonPlaceHolderService(OkHttpClient client) {
+        return new Retrofit.Builder()
+                .baseUrl("https://jsonplaceholder.typicode.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
+                .create(JsonPlaceHolderService.class);
     }
 
     @Provides
