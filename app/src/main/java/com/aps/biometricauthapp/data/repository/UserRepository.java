@@ -4,9 +4,11 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
+import com.aps.biometricauthapp.data.api.JsonPlaceHolderService;
 import com.aps.biometricauthapp.data.api.ViaCepService;
 import com.aps.biometricauthapp.data.db.UserDao;
 import com.aps.biometricauthapp.data.model.Address;
+import com.aps.biometricauthapp.data.model.Post;
 import com.aps.biometricauthapp.data.model.User;
 
 import java.util.List;
@@ -19,19 +21,25 @@ import retrofit2.Call;
 @Singleton
 public class UserRepository {
 
+    private final JsonPlaceHolderService placeHolderService;
     private final ViaCepService viaCepService;
     private LiveData<List<User>> getAllUsers;
     private final UserDao userDao;
 
     @Inject
-    public UserRepository(ViaCepService viaCepService, UserDao userDao) {
+    public UserRepository(ViaCepService viaCepService, JsonPlaceHolderService placeHolderService, UserDao userDao) {
         this.viaCepService = viaCepService;
+        this.placeHolderService = placeHolderService;
         this.userDao = userDao;
         getAllUsers = userDao.getAllUsers();
     }
 
     public Call<Address> getAddress(String cep) {
         return viaCepService.getAddress(cep);
+    }
+
+    public Call<List<Post>> getPostList() {
+        return placeHolderService.getPostList();
     }
 
     public void insertUser(User user) {
