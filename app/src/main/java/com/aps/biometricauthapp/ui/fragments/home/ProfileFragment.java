@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
@@ -18,6 +20,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
+        binding.userAddress.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_userAddressFragment));
         return binding.getRoot();
     }
 }
