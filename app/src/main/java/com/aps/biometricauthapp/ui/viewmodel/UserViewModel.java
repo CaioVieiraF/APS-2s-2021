@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.aps.biometricauthapp.data.model.Address;
+import com.aps.biometricauthapp.data.model.Post;
 import com.aps.biometricauthapp.data.model.User;
 import com.aps.biometricauthapp.data.repository.UserRepository;
 
@@ -28,6 +29,10 @@ public class UserViewModel extends ViewModel {
 
     public Call<Address> getAddress(String cep) {
         return repository.getAddress(cep);
+    }
+
+    public Call<List<Post>> getPostList() {
+        return repository.getPostList();
     }
 
     public void insertUser(User user) {
