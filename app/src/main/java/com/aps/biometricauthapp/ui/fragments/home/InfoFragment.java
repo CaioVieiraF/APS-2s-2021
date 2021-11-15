@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.aps.biometricauthapp.data.model.User;
 import com.aps.biometricauthapp.databinding.FragmentInfoBinding;
 
 public class InfoFragment extends Fragment {
@@ -18,6 +19,7 @@ public class InfoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentInfoBinding.inflate(inflater, container, false);
+        User user = (User) requireActivity().getIntent().getSerializableExtra("user");
         return binding.getRoot();
     }
 }
