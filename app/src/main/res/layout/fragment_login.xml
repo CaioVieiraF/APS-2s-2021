@@ -70,14 +70,14 @@
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_shape"
-        android:textColor="@color/brazil_yellow_light"
         android:text="Entrar"
+        android:textColor="@color/brazil_yellow_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputPasswordLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/rememberCredentialsSwitch" />
 
     <Button
         android:id="@+id/registerButton"
@@ -93,13 +93,42 @@
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="212dp"
-        android:layout_height="177dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         android:src="@drawable/coat_of_arms_of_brazil"
         app:layout_constraintBottom_toTopOf="@+id/textInputEmailLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHeight_max="177dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintWidth_max="212dp" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/rememberCredentialsSwitch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:text="Lembrar usuário e senha"
+        android:textColor="@color/brazil_green"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputPasswordLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/brazil_green"
+        android:textStyle="bold"
+        android:text="Ministério do Meio Ambiente"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
