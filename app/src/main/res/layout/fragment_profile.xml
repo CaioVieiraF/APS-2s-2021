@@ -58,13 +58,11 @@
         android:layout_marginBottom="8dp"
         android:background="#c0c0c0" />
 
-    <TextView
-        android:id="@+id/userLoginActivity"
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/useBiometricsSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Histórico de Login"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:text="Usar Biometria"
         android:textColor="@color/black"
         android:textSize="24sp" />
 
@@ -74,13 +72,4 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="#c0c0c0" />
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/useBiometricsSwitch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Usar Biometria"
-        android:textColor="@color/black"
-        android:textSize="24sp" />
-
 </LinearLayout>
