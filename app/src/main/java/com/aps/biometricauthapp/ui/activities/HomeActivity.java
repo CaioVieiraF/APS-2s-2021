@@ -10,6 +10,9 @@ import androidx.navigation.ui.NavigationUI;
 import com.aps.biometricauthapp.R;
 import com.aps.biometricauthapp.databinding.ActivityHomeBinding;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
