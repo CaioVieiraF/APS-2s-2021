@@ -11,9 +11,12 @@ import android.widget.DatePicker;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.aps.biometricauthapp.data.model.User;
 import com.aps.biometricauthapp.databinding.FragmentSignUpBasicInfoBinding;
+import com.aps.biometricauthapp.ui.viewmodel.UserViewModel;
 import com.aps.biometricauthapp.util.DatePickerFragment;
 import com.blankj.utilcode.util.RegexUtils;
 import com.google.android.material.textfield.TextInputLayout;
@@ -21,10 +24,15 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class SignUpBasicInfoFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     private FragmentSignUpBasicInfoBinding binding;
+    private UserViewModel viewModel;
 
     public SignUpBasicInfoFragment() {
     }
@@ -33,6 +41,7 @@ public class SignUpBasicInfoFragment extends Fragment implements DatePickerDialo
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSignUpBasicInfoBinding.inflate(inflater, container, false);
+        viewModel = new ViewModelProvider(this).get(UserViewModel.class);
         setView();
         return binding.getRoot();
     }
@@ -71,31 +80,45 @@ public class SignUpBasicInfoFragment extends Fragment implements DatePickerDialo
     }
 
     private boolean isTextInputOnError() {
-        boolean onError = false;
+        AtomicBoolean onError = new AtomicBoolean(false);
+        viewModel.getGetAllUsers().observe(getViewLifecycleOwner(), users -> {
+            for (User user : users) {
+                if (user.getEmail().equals(binding.textInputEmail.getText().toString())) {
+                    onError.set(true);
+                }
+            }
+        });
         TextInputLayout[] textInputLayoutList = textInputLayoutList();
         for (TextInputLayout textInputLayout : textInputLayoutList) {
             if (TextUtils.isEmpty(Objects.requireNonNull(textInputLayout.getEditText()).getText())) {
-                onError = true;
+                onError.set(true);
             }
             if (!RegexUtils.isEmail(binding.textInputEmail.getText()) && !TextUtils.isEmpty(binding.textInputEmail.getText())) {
-                onError = true;
+                onError.set(true);
             }
             if (!Objects.requireNonNull(binding.textInputEmailConfirmation.getText()).toString().equals(binding.textInputEmail.getText().toString()) && !TextUtils.isEmpty(binding.textInputEmailConfirmation.getText())) {
-                onError = true;
+                onError.set(true);
             }
             if (!RegexUtils.isTel(binding.textInputPhone.getMasked()) && !binding.textInputPhone.isDone() && !TextUtils.isEmpty(binding.textInputPhone.getText())) {
-                onError = true;
+                onError.set(true);
             }
             // TODO: 13/11/2021 terminar essa validação de cpf
             if (!binding.textInputCpf.isDone() && !TextUtils.isEmpty(binding.textInputCpf.getText())) {
-                onError = true;
+                onError.set(true);
             }
         }
-        return onError;
+        return onError.get();
     }
 
     private void setErrorOnTextInput() {
-        // TODO: 07/11/2021 fazer validação do cpf
+        viewModel.getGetAllUsers().observe(getViewLifecycleOwner(), users -> {
+            for (User user : users) {
+                if (user.getEmail().equals(binding.textInputEmail.getText().toString())) {
+                    binding.textInputEmailLayout.setErrorEnabled(true);
+                    binding.textInputEmailLayout.setError("E-mail já está sendo utilizado!");
+                }
+            }
+        });
         TextInputLayout[] textInputLayoutList = textInputLayoutList();
         for (TextInputLayout textInputLayout : textInputLayoutList) {
             if (TextUtils.isEmpty(Objects.requireNonNull(textInputLayout.getEditText()).getText())) {
@@ -115,7 +138,6 @@ public class SignUpBasicInfoFragment extends Fragment implements DatePickerDialo
                 binding.textInputPhoneLayout.setErrorEnabled(true);
                 binding.textInputPhoneLayout.setError("Número de telefone inválido!");
             }
-            // TODO: 13/11/2021 terminar essa validação de cpf
             if (!binding.textInputCpf.isDone() && !TextUtils.isEmpty(binding.textInputCpf.getText())) {
                 binding.textInputCpfLayout.setErrorEnabled(true);
                 binding.textInputCpfLayout.setError("CPF inválido!");
